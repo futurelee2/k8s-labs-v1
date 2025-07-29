@@ -13,17 +13,18 @@ metadata:
   name: resource-pod
 spec:
   containers:
-  - name: resource-container
-    image: nginx
-    ports:
-    - containerPort: 80
-    resources:
-      requests:
-        cpu: "100m"
-        memory: "128Mi"
-      limits:
-        cpu: "200m"
-        memory: "256Mi"
+    - name: resource-container
+      image: nginx
+      ports:
+        - containerPort: 80
+      resources: # 컨테이너 리소스 제한 -> 컨테이너 = 미니 리눅스 임. 과도한 리소스를 주게되면 호스트 하드웨어 성능 부족 or 컨테이너가 여러개 일때 필요한 리소스를 적절하게 배분 가능
+        # 굳이 많은 리소스 할당할 필요없으므로
+        requests:
+          cpu: "100m"
+          memory: "128Mi"
+        limits:
+          cpu: "200m"
+          memory: "256Mi"
 ```
 
 ## 2. Pod 생성 및 상태 확인

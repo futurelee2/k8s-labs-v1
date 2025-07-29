@@ -47,3 +47,5 @@ log/
 # Docker
 *.swp
 .dockerignore # This file itself should be committed, but adding it here as a reminder
+
+.env

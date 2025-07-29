@@ -1,6 +1,7 @@
 # 실습 1: Pod vs Deployment
 
 ## 🎯 학습 목표
+
 - 개별 Pod 관리 방식의 한계를 이해한다.
 - `Deployment`가 어떻게 '원하는 상태'를 보장하는지 이해하고, 자동 복구 기능을 확인한다.
 - `Deployment`의 기본 구조(replicas, selector, template)를 이해한다.
@@ -45,17 +46,17 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: frontend
+      app: frontend # frontend 로 되어있는 이름을 잡아서 리플리카셋을 1로 설정하게 됨?
   template:
     metadata:
       labels:
         app: frontend # Selector와 일치해야 함
-    spec:
+    spec: # 파드 추가
       containers:
-      - name: frontend
-        image: your-dockerhub-username/todo-list-frontend:v1.0 # 본인의 이미지 주소로 변경
-        ports:
-        - containerPort: 3000
+        - name: frontend
+          image: your-dockerhub-username/todo-list-frontend:v1.0 # 본인의 이미지 주소로 변경
+          ports:
+            - containerPort: 3000
 ```
 
 ### 2. Deployment 배포 및 Pod 확인

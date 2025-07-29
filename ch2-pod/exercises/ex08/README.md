@@ -28,8 +28,8 @@ cd ../../..
 ### 1.3. Frontend 이미지 빌드 및 푸시
 
 ```bash
-cd apps/todo-list/frontend
-docker build -t your-dockerhub-username/k8s-labs-todo-frontend:latest .
+cd apps/todo-list/frontend`
+docker build -t your-dockerhub-username/`k8s-labs-todo-frontend:latest` .
 docker push your-dockerhub-username/k8s-labs-todo-frontend:latest
 cd ../../..
 ```
@@ -44,6 +44,8 @@ cd ../../..
 kubectl apply -f postgres-pod.yaml
 ```
 
+`
+
 ## 3. Backend Pod 생성
 
 애플리케이션의 백엔드 서버를 위한 Pod를 생성합니다. `backend-pod.yaml` 파일을 작성하고 적용합니다.
@@ -51,6 +53,8 @@ kubectl apply -f postgres-pod.yaml
 ```bash
 kubectl apply -f backend-pod.yaml
 ```
+
+`
 
 ## 4. Frontend Pod 생성
 

@@ -15,7 +15,7 @@ spring:
       ddl-auto: update
     show-sql: true
 
-# Cloudflare R2 설정
+#Cloudflare R2 설정
 cloud:
   aws:
     credentials:
