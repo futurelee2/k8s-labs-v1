@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: frontend-deployment
 spec:
-  replicas: 1
+  replicas: 5
   selector:
     matchLabels:
       app: frontend # frontend 로 되어있는 이름을 잡아서 리플리카셋을 1로 설정하게 됨?
@@ -14,6 +14,6 @@ spec:
     spec: # 파드 추가
       containers:
         - name: frontend
-          image: your-dockerhub-username/todo-list-frontend:v1.0 # 본인의 이미지 주소로 변경
+          image: mirae2/k8s-labs-todo-frontend:v1.0 # 본인의 이미지 주소로 변경
           ports:
             - containerPort: 3000
