@@ -84,3 +84,8 @@ out/
 # Local 개발 환경 변수
 .env
 
+ch2-pod/labs/backend-pod.yaml
+ch2-pod/labs/database-pod.yaml
+ch2-pod/labs/frontend-pod.yaml
+
+**/labs/**

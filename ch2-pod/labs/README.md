@@ -18,7 +18,6 @@
 
 각 애플리케이션의 소스 코드는 `apps/ddoddo-market` 디렉토리에서 확인할 수 있습니다.
 
-
 ## 💻 해결 과제
 
 여러분은 `apps/ddoddo-market` 프로젝트를 쿠버네티스 클러스터에 배포해야 합니다. 아래의 구현 목표를 만족하는 `Dockerfile` 2개와 쿠버네티스 `Pod` YAML 파일 3개를 `ch2/labs` 디렉토리에 직접 작성해주세요.
@@ -28,8 +27,8 @@
 **구현 목표:**
 
 1.  `ddoddo-market`의 **frontend**와 **backend** 애플리케이션을 각각 빌드하고 컨테이너 이미지로 만드세요.
-    * `apps/ddoddo-market/frontend/Dockerfile`
-    * `apps/ddoddo-market/backend/Dockerfile`
+    - `apps/ddoddo-market/frontend/Dockerfile`
+    - `apps/ddoddo-market/backend/Dockerfile`
 2.  생성한 두 개의 이미지를 Docker Hub와 같은 공개 컨테이너 레지스트리에 푸시하세요. (예: `your-username/ddoddo-frontend:v1`, `your-username/ddoddo-backend:v1`)
 
 ### 과제 2: 쿠버네티스 Pod Manifest 작성 및 Pod 생성
@@ -39,22 +38,24 @@
 아래의 요구사항을 만족하는 3개의 Pod Manifest YAML 파일을 작성하세요.
 
 1.  **`database-pod.yaml`**
-    * **Pod 이름:** `db-pod`
-    * **컨테이너 이미지:** `postgres:15`
-    * **환경 변수:** PostgreSQL 컨테이너 실행에 필요한 `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB`를 설정하세요. (값은 자유롭게 지정)
-    * **포트:** 컨테이너의 `5432` 포트를 노출하세요.
+
+    - **Pod 이름:** `db-pod`
+    - **컨테이너 이미지:** `postgres:15`
+    - **환경 변수:** PostgreSQL 컨테이너 실행에 필요한 `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB`를 설정하세요. (값은 자유롭게 지정)
+    - **포트:** 컨테이너의 `5432` 포트를 노출하세요.
 
 2.  **`backend-pod.yaml`**
-    * **Pod 이름:** `backend-pod`
-    * **컨테이너 이미지:** **과제 1**에서 빌드하고 푸시한 백엔드 이미지를 사용하세요.
-    * **환경 변수:** `ddoddo-market` 백엔드 애플리케이션 실행에 필요한 모든 환경 변수를 찾아 설정하세요.
-    * **포트:** 컨테이너의 `8080` 포트를 노출하세요.
+
+    - **Pod 이름:** `backend-pod`
+    - **컨테이너 이미지:** **과제 1**에서 빌드하고 푸시한 백엔드 이미지를 사용하세요.
+    - **환경 변수:** `ddoddo-market` 백엔드 애플리케이션 실행에 필요한 모든 환경 변수를 찾아 설정하세요.
+    - **포트:** 컨테이너의 `8080` 포트를 노출하세요.
 
 3.  **`frontend-pod.yaml`**
-    * **Pod 이름:** `frontend-pod`
-    * **컨테이너 이미지:** **과제 1**에서 빌드하고 푸시한 프론트엔드 이미지를 사용하세요.
-    * **환경 변수:** `ddoddo-market` 프론트엔드 애플리케이션 실행에 필요한 모든 환경 변수를 찾아 설정하세요.
-    * **포트:** 컨테이너의 `3000` 포트를 노출하세요.
+    - **Pod 이름:** `frontend-pod`
+    - **컨테이너 이미지:** **과제 1**에서 빌드하고 푸시한 프론트엔드 이미지를 사용하세요.
+    - **환경 변수:** `ddoddo-market` 프론트엔드 애플리케이션 실행에 필요한 모든 환경 변수를 찾아 설정하세요.
+    - **포트:** 컨테이너의 `3000` 포트를 노출하세요.
 
 ---
 
@@ -64,15 +65,16 @@
 
 애플리케이션이 어떤 환경 변수를 필요로 하는지는 **소스 코드**와 **설정 파일**에 모두 명시되어 있습니다.
 
-* **Backend (`apps/ddoddo-market/backend`):**
-    * `src/main/resources/application.yml` 과 `application-dev.yml` 파일을 열어 데이터베이스 연결에 어떤 정보가 필요한지 확인해보세요.
-    * `src/main/java/com/ddoddo/backend/config/S3Config.java` 파일을 분석하면 이미지 업로드를 위해 어떤 환경 변수들이 필요한지 알 수 있습니다. Cloudflare R2는 S3와 호환되므로, 관련된 AWS 설정값을 유추할 수 있습니다.
-    * **Spring Boot 환경 변수 규칙:** `spring.datasource.url` 같은 YAML 키는 `SPRING_DATASOURCE_URL` 형태의 환경 변수로 대체될 수 있습니다.
+- **Backend (`apps/ddoddo-market/backend`):**
 
-* **Frontend (`apps/ddoddo-market/frontend`):**
-    * `src/utils/supabase/client.ts` 와 `server.ts` 파일은 **Supabase** 연동에 필요한 환경 변수가 무엇인지 알려줍니다.
-    * `src/lib/api.ts` 파일에서 백엔드 API 서버의 주소를 어떻게 설정하는지 확인해보세요.
-    * **Next.js 환경 변수 규칙:** 클라이언트 사이드에서 사용 가능한 환경 변수는 `NEXT_PUBLIC_` 접두사로 시작해야 합니다.
+  - `src/main/resources/application.yml` 과 `application-dev.yml` 파일을 열어 데이터베이스 연결에 어떤 정보가 필요한지 확인해보세요.
+  - `src/main/java/com/ddoddo/backend/config/S3Config.java` 파일을 분석하면 이미지 업로드를 위해 어떤 환경 변수들이 필요한지 알 수 있습니다. Cloudflare R2는 S3와 호환되므로, 관련된 AWS 설정값을 유추할 수 있습니다.
+  - **Spring Boot 환경 변수 규칙:** `spring.datasource.url` 같은 YAML 키는 `SPRING_DATASOURCE_URL` 형태의 환경 변수로 대체될 수 있습니다.
+
+- **Frontend (`apps/ddoddo-market/frontend`):**
+  - `src/utils/supabase/client.ts` 와 `server.ts` 파일은 **Supabase** 연동에 필요한 환경 변수가 무엇인지 알려줍니다.
+  - `src/lib/api.ts` 파일에서 백엔드 API 서버의 주소를 어떻게 설정하는지 확인해보세요.
+  - **Next.js 환경 변수 규칙:** 클라이언트 사이드에서 사용 가능한 환경 변수는 `NEXT_PUBLIC_` 접두사로 시작해야 합니다.
 
 ### Tip 2: Pod의 네트워크는 격리되어 있습니다.
 

@@ -15,6 +15,6 @@ spec:
       containers:
         - name: backend
           # 본인의 v1.0 이미지 주소로 변경
-          image: mirae2/k8s-labs-todo-backend:v1.0
+          image: captainyun/k8s-labs-todo-backend:v2.0
           ports:
             - containerPort: 8080

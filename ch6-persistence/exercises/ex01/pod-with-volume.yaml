@@ -9,6 +9,7 @@ spec:
       command: ["/bin/sh", "-c"]
       args:
         - >
+          mkdir -p /data;
           while true; do
             echo "$(date)" >> /data/time.txt;
             sleep 20;
@@ -21,6 +22,6 @@ spec:
   # 이 볼륨은 호스트 머신(Minikube)의 /tmp/k8s-data 디렉토리를 사용합니다.
   volumes:
     - name: my-volume
-      hostPath:
+      hostPath: # 쿠버네티스에서 사용하는 볼륨 타입 중 하나
         path: /tmp/k8s-data
         type: DirectoryOrCreate
