@@ -89,3 +89,5 @@ ch2-pod/labs/database-pod.yaml
 ch2-pod/labs/frontend-pod.yaml
 
 **/labs/**
+**/labs/**/*.yaml
+

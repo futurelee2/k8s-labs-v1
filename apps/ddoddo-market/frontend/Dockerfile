@@ -25,3 +25,32 @@ COPY . .
 
 # 8. Next.js 앱 빌드 (또는 Vite 등 빌드 명령어)
 RUN npm run build
+
+EXPOSE 3000
+
+CMD ["npm", "run", "start"]
+
+
+
+## 
+# FROM node:20-alpine AS builder
+
+# WORKDIR /app
+
+# COPY package.json package-lock.json ./
+# RUN npm ci
+# COPY . .
+
+# RUN npm run build
+
+# FROM node:20-alpine AS runner
+
+# ENV NODE_ENV production
+
+# WORKDIR /app
+
+# COPY --from=builder /app ./
+
+# EXPOSE 3000
+
+# CMD ["npm", "run", "start"]
