@@ -1,3 +1,5 @@
+// 노드 기반 자스 코드
+
 const express = require("express");
 const app = express();
 const PORT = 8080;
