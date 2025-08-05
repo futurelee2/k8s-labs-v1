@@ -1,7 +1,7 @@
 backend:
   replicaCount: 2
   image:
-    repository: futurelee2/k8s-labs-todo-backend
+    repository: mirae2/k8s-labs-todo-backend
     tag: v1.0
   service:
     type: NodePort
