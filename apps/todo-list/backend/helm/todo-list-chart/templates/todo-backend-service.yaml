@@ -13,4 +13,4 @@ spec:
     nodePort: {{ .Values.backend.service.nodePort.port }}
     {{- end }}
   selector:
-    {{- include "todo-list-chart.backend.selectorLabels" . | nindent 4 }}
+    {{- include "todo-list-chart.backend.selectorLabels" . | nindent 4 }} # 수정됨
