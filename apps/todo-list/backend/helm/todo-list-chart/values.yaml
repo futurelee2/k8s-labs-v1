@@ -1,7 +1,11 @@
 backend:
   replicaCount: 2
   image:
+<<<<<<< HEAD
     repository: mirae2/k8s-labs-todo-backend
+=======
+    repository: captainyun/k8s-labs-todo-backend
+>>>>>>> f9c2a7ccf15662bc8aeda6614979715cc6fb813f
     tag: v1.0
   service:
     type: NodePort

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -5,4 +6,13 @@ metadata:
   labels: {{- include "todo-list-chart.labels" . | nindent 4 }}
 data:
   MYSQL_DATABASE: {{.Values.database.name}}
+=======
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "todo-list-chart.fullname" . }}-db-configmap
+  labels: {{- include "todo-list-chart.labels" . | nindent 4 }}
+data:
+  MYSQL_DATABASE: {{.Values.database.name}}
+>>>>>>> f9c2a7ccf15662bc8aeda6614979715cc6fb813f
   MYSQL_USER: {{.Values.database.user}}
